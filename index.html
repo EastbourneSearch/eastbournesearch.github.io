@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+<style>
+    /* Style to position the image */
+    #left-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px; /* Adjust width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    /* Style to position the text */
+    #redirect-text {
+        position: absolute;
+        top: 0;
+        left: 220px; /* Adjust distance from the left side */
+    }
+</style>
+<script>
+    setTimeout(function() {
+        window.location.href = "https://www.eastbournesearch.co.nz";
+    }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+</head>
+<body>
+	<img id="left-image" src="images/DDL_logo_mar2024.png" alt="Direct Diligence Ltd logo">
+    <p id="redirect-text">The new website for Direct Diligence Ltd is coming soon.<br><br>
+        In the meantime, redirecting to eastbournesearch.co.nz in 5 seconds...</p>
+</body>
+</html>
