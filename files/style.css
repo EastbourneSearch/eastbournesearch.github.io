@@ -1,0 +1,366 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+  /* Brand colours — unchanged from the original site */
+  --color-brand: #336666;
+  --color-text: #333;
+  --color-heading-sub: #555;
+  --color-white: #fff;
+
+  /* Derived tints/shades — same hue family as --color-brand, used for
+     borders, shadows and hover states so the palette stays cohesive */
+  --color-brand-dark: #274d4d;
+  --color-tint: rgba(51, 102, 102, 0.05);
+  --color-border: rgba(51, 102, 102, 0.16);
+  --color-shadow: rgba(24, 45, 45, 0.10);
+
+  /* Type */
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Fixed header/nav heights */
+  --fixed-header-height: 130px;
+  --fixed-nav-height: 100px;
+  --fixed-total-height: calc(var(--fixed-header-height) + var(--fixed-nav-height));
+
+  --scroll-nav-height: 140px;
+  --scroll-offset: calc(var(--fixed-header-height) + var(--scroll-nav-height));
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 30px;
+  --space-xl: 40px;
+
+  /* Shape */
+  --radius-md: 10px;
+  --radius-sm: 6px;
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-size: 80%;
+  font-family: var(--font-body);
+  margin: 0;
+  background: var(--color-brand);
+  color: var(--color-text);
+}
+a {
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--color-brand-dark);
+  text-decoration: underline;
+}
+a img {
+  border: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Layout wrapper
+   ========================================================================== */
+#site-wrapper {
+  margin: 0 auto;
+  max-width: 1100px;
+  background: var(--color-white);
+  line-height: 1.5;
+  box-shadow: 0 0 40px var(--color-shadow);
+}
+
+/* ==========================================================================
+   Fixed header
+   ========================================================================== */
+#header {
+  width: 100%;
+  max-width: 1100px;
+  height: var(--fixed-header-height);
+  text-align: center;
+  position: fixed;
+  background: var(--color-white);
+  z-index: 2;
+}
+#header img {
+  margin: auto;
+  padding-top: var(--space-md);
+  max-height: 100%;
+}
+
+/* ==========================================================================
+   Fixed navigation
+   ========================================================================== */
+#main-nav {
+  width: calc(100% - 42px);
+  max-width: 1058px;
+  padding-bottom: var(--space-md);
+  margin: var(--fixed-header-height) 0 0 21px;
+  text-align: center;
+  position: fixed;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  z-index: 2;
+}
+#main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-sm) 0 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#main-nav ul li {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#main-nav ul li:not(.first)::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: var(--color-border);
+  margin: 0 18px;
+  vertical-align: middle;
+}
+#main-nav ul li a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  padding: 4px 2px;
+  position: relative;
+}
+#main-nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: 2px;
+  background: var(--color-brand);
+  transition: right var(--transition-fast);
+}
+#main-nav ul li a.current::after,
+#main-nav ul li a:hover::after {
+  right: 0;
+}
+#main-nav ul li a.current {
+  color: var(--color-brand);
+}
+#main-nav ul li a:hover {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+/* Active-link tracking: CSS-only, no JS.
+   When a section becomes the URL's :target (i.e. its nav link was clicked),
+   move the underline there and clear it from Home. Falls back to Home
+   being current when no section is targeted (fresh page load). */
+#site-wrapper:has(#services:target) #main-nav a[href="#home"],
+#site-wrapper:has(#fqs:target) #main-nav a[href="#home"],
+#site-wrapper:has(#order:target) #main-nav a[href="#home"],
+#site-wrapper:has(#contact:target) #main-nav a[href="#home"] {
+  color: var(--color-text);
+}
+#site-wrapper:has(#services:target) #main-nav a[href="#home"]::after,
+#site-wrapper:has(#fqs:target) #main-nav a[href="#home"]::after,
+#site-wrapper:has(#order:target) #main-nav a[href="#home"]::after,
+#site-wrapper:has(#contact:target) #main-nav a[href="#home"]::after {
+  right: 100%;
+}
+#site-wrapper:has(#services:target) #main-nav a[href="#services"],
+#site-wrapper:has(#fqs:target) #main-nav a[href="#fqs"],
+#site-wrapper:has(#order:target) #main-nav a[href="#order"],
+#site-wrapper:has(#contact:target) #main-nav a[href="#contact"] {
+  color: var(--color-brand);
+}
+#site-wrapper:has(#services:target) #main-nav a[href="#services"]::after,
+#site-wrapper:has(#fqs:target) #main-nav a[href="#fqs"]::after,
+#site-wrapper:has(#order:target) #main-nav a[href="#order"]::after,
+#site-wrapper:has(#contact:target) #main-nav a[href="#contact"]::after {
+  right: 0;
+}
+#main-nav h1 {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  color: var(--color-brand);
+  background: var(--color-white);
+  margin: 8px 0 0 0;
+}
+
+/* ==========================================================================
+   Content area
+   ========================================================================== */
+#content {
+  padding: 0 var(--space-md) 0 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--color-brand);
+  line-height: 1.2;
+  margin: 0 0 var(--space-md) 0;
+  padding-left: var(--space-sm);
+  border-left: 3px solid var(--color-brand);
+}
+h3 {
+  font-family: var(--font-display);
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--color-heading-sub);
+  margin: var(--space-md) 0 var(--space-xs) 0;
+}
+h3:first-of-type {
+  margin-top: 0;
+}
+p {
+  margin: 0 0 var(--space-sm) 0;
+}
+ul {
+  margin: 0 0 var(--space-sm) 0;
+  padding-left: var(--space-md);
+}
+ul li {
+  margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   Page sections
+   ========================================================================== */
+.main {
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  scroll-margin-top: var(--scroll-offset);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 10px var(--color-shadow);
+}
+#home {
+  padding-top: calc(var(--fixed-total-height) + var(--space-xs));
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+  padding-bottom: 0;
+  margin-top: 0;
+}
+#search,
+#order {
+  font-size: 16px;
+}
+#search img {
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Contact table
+   ========================================================================== */
+#contact table {
+  margin-top: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+#contact td {
+  padding-bottom: var(--space-sm);
+}
+.contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.contact-icon {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-right: 8px;
+  fill: var(--color-brand);
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 800px) {
+  #site-wrapper {
+    box-shadow: none;
+  }
+  #header,
+  #main-nav {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+  #header {
+    height: auto;
+    padding: var(--space-md) 0;
+  }
+  #main-nav {
+    padding: var(--space-sm) 0 var(--space-md) 0;
+  }
+  #main-nav ul {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  #main-nav ul li:not(.first)::before {
+    display: none;
+  }
+  #content {
+    padding: 0 var(--space-md);
+  }
+  #home {
+    margin-top: var(--space-md);
+    padding: var(--space-md) 0 0 0;
+  }
+  #search img {
+    float: none !important;
+    display: block;
+    margin: 0 auto var(--space-md) auto !important;
+  }
+  .main {
+    padding: var(--space-md);
+  }
+}

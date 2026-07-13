@@ -1,561 +1,117 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eastbourne Search Ltd - New Zealand's trusted legal search agency since 1980. Fast, efficient, confidential nationwide LINZ title searches.">
-    <title>Eastbourne Search Ltd | Legal Title Search Agency NZ</title>
-    <style>
-        /* Modern Legal Firm Color Palette */
-        :root {
-            --primary-navy: #1e3a5f;
-            --secondary-blue: #2c5f8d;
-            --accent-gold: #c9a961;
-            --light-gray: #f4f6f8;
-            --mid-gray: #e8ebed;
-            --dark-gray: #4a5568;
-            --white: #ffffff;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--white);
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-gold);
-            color: var(--primary-navy);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.4);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 4rem 0;
-        }
-
-        section:nth-child(even) {
-            background-color: var(--light-gray);
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: var(--primary-navy);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--accent-gold);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-        }
-
-        .service-card h3 {
-            color: var(--primary-navy);
-        }
-
-        /* Why Choose Us */
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-
-        .feature-icon {
-            background: var(--accent-gold);
-            color: var(--primary-navy);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        /* Order Forms Section */
-        .download-section {
-            text-align: center;
-            padding: 3rem;
-            background: var(--mid-gray);
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .download-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--secondary-blue);
-            color: var(--white);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-
-        .download-btn:hover {
-            background: var(--primary-navy);
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .contact-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-method {
-            margin: 1rem 0;
-            padding: 0.75rem;
-            background: var(--light-gray);
-            border-radius: 5px;
-        }
-
-        .contact-method strong {
-            color: var(--primary-navy);
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-method a {
-            color: var(--secondary-blue);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-method a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-navy);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer p {
-            opacity: 0.9;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-            }
-
-            section {
-                padding: 2rem 0;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Accent Bar */
-        .accent-bar {
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-gold) 0%, var(--secondary-blue) 100%);
-        }
-    </style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Eastbourne Search</title>
+	<link href="./files/style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav>
-            <div class="logo">Eastbourne Search Ltd</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#order">Order Forms</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+	<div id="site-wrapper">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>New Zealand's Trusted Legal Search Agency</h1>
-            <p>Professional LINZ title searches since 1980. Fast, efficient, and confidential nationwide service.</p>
-            <a href="#contact" class="cta-button">Get Started Today</a>
-        </div>
-    </section>
-    <div class="accent-bar"></div>
+		<div id="header">
+			<img src="./files/banner.png" alt="Banner">
+		</div>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Current Record of Title</h3>
-                    <p>Official real-time title includes current interests with diagram/deposited plan. Know exactly who owns the property and what restrictions apply.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Historical Record of Title</h3>
-                    <p>Official real-time current and historical data with imaged prior title (may not include plan). Complete property ownership history.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Copy of Document/Interest</h3>
-                    <p>As registered on the title including lease, caveat, easement, covenant, and other registered interests.</p>
-                </div>
-            </div>
+		<div id="main-nav">
+			<h1>Your Trusted Search Agent</h1>
+			<ul>
+				<li class="first"><a href="#home" class="current">Home</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#fqs">FAQs</a></li>
+				<li><a href="#order">Order</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</div>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--light-gray); border-radius: 8px;">
-                <h3 style="text-align: center; color: var(--primary-navy);">Important Due Diligence</h3>
-                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
-                    When buying, selling, or investing in real estate, it's essential to conduct proper due diligence. 
-                    A title search confirms property ownership, reveals any covenants, easements, caveats, or restrictions, 
-                    and verifies the correct legal description including lot and DP number and area.
-                </p>
-            </div>
-        </div>
-    </section>
+		<div id="content">
 
-    <!-- About / Why Choose Us Section -->
-    <section id="about">
-        <div class="container">
-            <h2>Why Choose Eastbourne Search?</h2>
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>Established Since 1980</h3>
-                        <p>One of New Zealand's longest-running search agencies with over 40 years of experience.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>One-Stop Shop</h3>
-                        <p>No contracts required. Easy ordering via email or website order form.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>Quick Turnaround</h3>
-                        <p>Your nominated timeframe - within the hour or sooner. Results emailed directly to you.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>Experienced Team</h3>
-                        <p>Hands-on original owners. Speak directly with the staff member who completed your search.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>Competitive Rates</h3>
-                        <p>No minimum monthly charges. No upfront or hidden costs. Special fees for multiple branch clients.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <h3>Extra Mile Service</h3>
-                        <p>We identify additional titles you may be unaware of and provide reliable, accurate results.</p>
-                    </div>
-                </div>
-            </div>
+			<div class="main" id="home">
+				<div id="search">
+					Eastbourne Search is the trading name of <a href="https://www.directdiligence.co.nz">Direct Diligence Limited</a>, a newly formed company to continue the legacy of Eastbourne Search Co.
+					It is one of New Zealand's most trusted legal search agencies and we are committed to providing the best service
+					at a reasonable fee. If you are looking for a fast, efficient, confidential nationwide search service, read about our services below and get in touch by emailing please <a href="mailto:search@eastbournesearch.co.nz?subject=Website%20Enquiry">search@eastbournesearch.co.nz</a>.
+				</div>
+			</div>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--white); border-radius: 8px; border: 2px solid var(--accent-gold);">
-                <p style="color: var(--text-secondary); font-style: italic;">
-                    <strong>Note:</strong> We provide official LINZ records but do not personally interpret title or interest documents. 
-                    For legal interpretation, please consult with your lawyer. The Real Estate Agents Authority recommends that 
-                    licensees establish whether interests such as covenants, caveats, easements, or drainage rights are registered 
-                    on the title and should be brought to the attention of interested parties.
-                </p>
-            </div>
-        </div>
-    </section>
+			<div class="main" id="services">
+				<h2>OUR SERVICES</h2>
+				<h3>Land Information New Zealand Records</h3>
+				<p></p>We conduct searches of the Land Information New Zealand records and provide copies of:</p>
+				<ul>
+					<li>Current Record of Title - official real-time title showing any current interests with diagram/deposited plan</li>
+					<li>Historical Record of Title - official real-time current and historical data</li>
+					<li>Document/Interest - as registered on the title e.g. lease, caveat, easement, covenant</li>
+					<li>Plan - Deposited, Unit, Flat or Spatial plan</li>
+					<li>Apartment Records - Body Corporate rule changes; title; plan; easements</li>
+					<li>Nominal Search - Personal name/company searched to establish any current ownership</li>
+					<li>Prior Ownership Search - Personal name/company searched to establish any past ownership</li>
+					<li>Block Land Search - Bulk lots, mass land or mapped areas</li>
+				</ul>
 
-    <!-- Order Forms Section -->
-    <section id="order">
-        <div class="container">
-            <h2>Order Forms & Resources</h2>
-            <div class="download-section">
-                <h3>Download Our Order Forms</h3>
-                <p>Submit your search request using our convenient order forms. All requests must be in writing for quality assurance.</p>
-                <div class="download-buttons">
-                    <a href="#" class="download-btn" onclick="alert('PDF Order Form - Please update this link to your actual PDF file path'); return false;">
-                        📄 Download PDF Order Form
-                    </a>
-                    <a href="#" class="download-btn" onclick="alert('Word Order Form - Please update this link to your actual Word file path'); return false;">
-                        📝 Download Word Order Form
-                    </a>
-                </div>
-                <p style="margin-top: 1.5rem; color: var(--text-secondary);">
-                    Prefer to email directly? Send your request to 
-                    <a href="mailto:search@eastbournesearch.co.nz" style="color: var(--secondary-blue); font-weight: 600;">search@eastbournesearch.co.nz</a>
-                </p>
-            </div>
+				<h3>Court Searches</h3>
+				<p>On your behalf we facilitate due diligence searches of court records to establish records of civil nationwide proceedings at the High, Supreme, Appeal, District, Employment (including Employment Relations Authority) and Environment Courts under specified company or personal names. A quality assured written report is provided.</p>
 
-            <div style="margin-top: 2rem; padding: 2rem; background: var(--light-gray); border-radius: 8px;">
-                <h3 style="color: var(--primary-navy);">How It Works</h3>
-                <ol style="margin-left: 1.5rem; margin-top: 1rem; line-height: 2;">
-                    <li>Download and complete the order form or email us your request</li>
-                    <li>Specify your required timeframe</li>
-                    <li>We'll process your search request immediately</li>
-                    <li>Receive your official LINZ title search results via email</li>
-                </ol>
-            </div>
-        </div>
-    </section>
+				<h3>Other Services</h3>
+				<ul>
+					<li>Probate searches</li>
+					<li>Personal Property Securites Register (PPSR) searches</li>
+					<li>Intellectual Property Office New Zealand (IPONZ) searches</li>
+					<li>M&#257;ori Land Court searches</li>
+				</ul>
+			</div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">
-                We're here to help with all your legal search needs. Our preferred method of contact is via email. Use the links below
-                to download a Search Order Form.
-            </p>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>📧 Email</h3>
-                    <div class="contact-method">
-                        <strong>General Enquiries & Search Requests</strong>
-                        <a href="mailto:search@eastbournesearch.co.nz">search@eastbournesearch.co.nz</a>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-                        Get in touch to oder your Title or Court Search, or find out if we can help you in your
-                        other seqrch needs.  Note that we require written requests for quality assurance purposes.
-                    </p>
-                </div>
+			<div class="main" id="fqs">
+				<h2>FREQUENTLY ASKED QUESTIONS</h2>
 
-                <div class="contact-card">
-                    <h3>📧 Email</h3>
-                    <div class="contact-method">
-                        <strong>Accounts Enquiries </strong>
-                        <a href="mailto:search@eastbournesearch.co.nz">search1@eastbournesearch.co.nz</a>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-                        Get in touch if you have any quesations about your account with us.
-                    </p>
-                </div>
+				<h3>Why Use Us?</h3>
+				<p>You deal with one of the longest running search agencies in NZ, established in 1980. We provide copies of the official real-time Land Information New Zealand (LINZ) documents with no contracts needed. Ordering is easy-just send us an email with the details of the property you are wanting a title for. We provide a reliable, accurate and fast turnaround with very competitive rates. You deal with an experienced team who will go the extra mile and you can pick up the phone and talk to the staff member who completed your search if you have any queries. All enquiries are kept confidential.</p>
 
-                <div class="contact-card">
-                    <h3>📞 Phone</h3>
-                    <div class="contact-method">
-                        <strong>Toll Free</strong>
-                        <a href="tel:0800222262">0800 22 22 62</a>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-                        Call us to discuss your search requirements. Our experienced team is ready to assist you.
-                    </p>
-                </div>
+				<h3>Why is it so important to search the Record of Title and registered interests?</h3>
+				<p>In recent times it has become extremely important to conduct your due diligence when buying, selling or investing in real estate. This is so you know exactly who owns the property, if there are any covenants, easements, caveats or other restrictions on the title and to confirm the correct legal description ie lot and DP number and the area. It is interesting to note that the Real Estate Agents Authority suggests "a licensee needs to establish whether or not there are interests registered on the title such as covenants, caveats, easements, drainage rights etc that should be brought to the attention of interested parties. This shows the importance of searching the Record of Title and interests.</p>
 
-                <div class="contact-card">
-                    <h3>🌐 Website</h3>
-                    <div class="contact-method">
-                        <strong>Official Website</strong>
-                        <a href="https://eastbournesearch.co.nz" target="_blank" rel="noopener">eastbournesearch.co.nz</a>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-                        Visit our website to submit orders online or access additional resources.
-                    </p>
-                </div>
-            </div>
+				<h3>How do I use your service?</h3>
+				<p>Our preferred method of contact is email since we require all search requests to be in writing to ensure there are no errors. Please emails us at <a href="mailto:search@eastbournesearch.co.nz?Subject=Website%20Enquiry">search@eastbournesearch.co.nz</a>.</p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-blue); color: var(--white); border-radius: 8px; text-align: center;">
-                <h3 style="color: var(--white);">Business Information</h3>
-                <p style="margin-top: 1rem;">
-                    <strong>Company Name:</strong> Eastbourne Search Co Ltd<br>
-                    <strong>NZBN:</strong> XXXX XXXX XXXX XXXX<br>
-                    <strong>Established:</strong> 1980<br>
-                    <strong>Service Area:</strong> Nationwide coverage across New Zealand
-                </p>
-            </div>
+				<h3>What is the turnaround time?</h3>
+				<p>Usually within the hour or sooner if your request is urgent. Results will be emailed to you.</p>
 
-            <div style="margin-top: 2rem; padding: 2rem; background: var(--light-gray); border-radius: 8px;">
-                <h3 style="color: var(--primary-navy); text-align: center;">Service Promise</h3>
-                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
-                    We are committed to providing the best service at a reasonable fee. With over 40 years of experience, 
-                    you can trust us to deliver fast, efficient, and confidential legal search services throughout New Zealand.
-                </p>
-            </div>
-        </div>
-    </section>
+				<h3>Fees?</h3>
+				<p>Our fees are very competitive. Special fees for multiple branch clients. POA. As you are not tied into a contract, there is no minimal monthly charge and no upfront or hidden costs. Complex, lengthy searches will incur a time and attendance fee which will be discussed on receipt of the request or following a preliminary search. Invoices/Statements are generated monthly. Payment can be made via direct bank deposit or by credit card. </p>
+			</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Direct Diligence Ltd. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Established 2024</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="mailto:search@eastbournesearch.co.nz" style="color: var(--accent-gold); text-decoration: none;">search@eastbournesearch.co.nz</a> | 
-                <a href="tel:0800222262" style="color: var(--accent-gold); text-decoration: none;">0800 22 22 62</a>
-            </p>
-        </div>
-    </footer>
+			<div class="main" id="order">
+				<h2>ORDER</h2>
+				<p>Our preferred method of contact is email. Please use <a href="mailto:search@eastbournesearch.co.nz?subject=Website%20Enquiry">search@eastbournesearch.co.nz</a> to submit your requests.</p>
+			</div>
+
+			<div class="main" id="contact">
+				<h2>CONTACT DETAILS</h2>
+				<table width="100%" border="0">
+					<tbody>
+						<tr>
+							<td width="50%" valign="top">
+								<p class="contact-line">
+									<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+									+64 (0)21 0911 7729 (General enquiries)
+								</p>
+								<p class="contact-line">
+									<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+									+64 (0)21 0809 2667 (Accounts enquiries)
+								</p>
+							</td>
+							<td width="50%" valign="top">
+								<p class="contact-line">
+									<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c.6 0 1 .4 1 1v14c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1zm1 2.4V17h14V6.4l-6.4 5.1a1 1 0 0 1-1.2 0L5 6.4zm1.5-.4 5.5 4.4L17.5 6h-11z"/></svg>
+									<a href="mailto:search@eastbournesearch.co.nz?subject=Website%20Enquiry">search@eastbournesearch.co.nz</a>
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>
