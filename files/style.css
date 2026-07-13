@@ -109,6 +109,7 @@ a img {
   margin: auto;
   padding-top: var(--space-md);
   max-height: 100%;
+  max-width: 100%;
 }
 
 /* ==========================================================================
@@ -336,7 +337,13 @@ ul li {
   }
   #header {
     height: auto;
-    padding: var(--space-md) 0;
+    padding: var(--space-md) var(--space-md);
+  }
+  #header img {
+    max-height: none;
+    height: auto;
+    width: 100%;
+    padding-top: 0;
   }
   #main-nav {
     padding: var(--space-sm) 0 var(--space-md) 0;
@@ -362,5 +369,15 @@ ul li {
   }
   .main {
     padding: var(--space-md);
+  }
+  #contact table,
+  #contact tbody,
+  #contact tr,
+  #contact td {
+    display: block;
+    width: 100%;
+  }
+  #contact td {
+    padding-bottom: var(--space-md);
   }
 }
